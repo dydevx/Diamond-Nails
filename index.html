@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Nails</title>
+  <meta name="description" content="Diamond Nails is a modern luxury nail salon in Matlock offering manicures, pedicures, gel nails, acrylics, BIAB, infills, nail art and spa pedicures.">
+  <meta name="keywords" content="Diamond Nails Matlock, nail salon Matlock, manicure Matlock, pedicure Matlock, BIAB, gel nails, acrylic nails">
+  <meta property="og:title" content="Diamond Nails">
+  <meta property="og:description" content="Elegant Nails, Beautiful You. Premium nail care at 18 Firs Parade, Matlock, DE4 3AS.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/logo.png">
+  <link rel="icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Core design system */
+    :root {
+      --porcelain: #fbfaf8;
+      --pearl: #f5f0eb;
+      --blush: #ead1cf;
+      --rose: #bc7f86;
+      --champagne: #d5b17a;
+      --soft-gold: #ead8b7;
+      --ink: #171514;
+      --graphite: #3a3532;
+      --mist: #9c9691;
+      --line: rgba(23, 21, 20, .10);
+      --glass: rgba(255, 255, 255, .78);
+      --shadow: 0 24px 70px rgba(36, 29, 25, .12);
+      --shadow-soft: 0 16px 42px rgba(36, 29, 25, .08);
+      --radius: 8px;
+      --max: 1180px;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #fff 0%, var(--porcelain) 36%, #f8f2ee 100%);
+      font-family: "Poppins", Arial, sans-serif;
+      line-height: 1.68;
+      letter-spacing: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 104px 0;
+      position: relative;
+    }
+
+    .section.alt {
+      background:
+        linear-gradient(180deg, rgba(234, 209, 207, .22), rgba(255, 255, 255, .78)),
+        var(--pearl);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+      gap: 44px;
+      align-items: end;
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--rose);
+      font-size: .77rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      max-width: 780px;
+      font-size: clamp(2.15rem, 4vw, 4.35rem);
+    }
+
+    h3 {
+      font-size: 1.45rem;
+    }
+
+    .lead {
+      color: var(--graphite);
+      font-size: 1rem;
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 13px 24px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: -30% auto -30% -55%;
+      z-index: -1;
+      width: 36%;
+      transform: skewX(-18deg);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .62), transparent);
+      transition: left .58s var(--ease);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(23, 21, 20, .14);
+    }
+
+    .btn:hover::after {
+      left: 125%;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--ink), #4c3d36 58%, #b58c50);
+    }
+
+    .btn-light {
+      color: var(--ink);
+      border-color: rgba(213, 177, 122, .45);
+      background: rgba(255, 255, 255, .72);
+      backdrop-filter: blur(16px);
+    }
+
+    /* Loading screen */
+    .loader {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      display: grid;
+      place-items: center;
+      background: var(--porcelain);
+      transition: opacity .75s var(--ease), visibility .75s var(--ease);
+    }
+
+    .loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-card {
+      width: 190px;
+      height: 190px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(213, 177, 122, .42);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .72);
+      box-shadow: var(--shadow);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .loader-card img {
+      width: 128px;
+      height: 128px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    @keyframes pulse {
+      50% { transform: scale(1.04); }
+    }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      padding: 16px 0;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .76);
+      border-bottom: 1px solid rgba(23, 21, 20, .06);
+      backdrop-filter: blur(18px);
+      transition: box-shadow .3s var(--ease), padding .3s var(--ease);
+    }
+
+    .site-header.is-scrolled,
+    .site-header.menu-open {
+      padding: 10px 0;
+      box-shadow: 0 12px 36px rgba(23, 21, 20, .08);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.42rem;
+      font-weight: 700;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      padding: 3px;
+      border: 1px solid rgba(213, 177, 122, .42);
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(23, 21, 20, .08);
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(12px, 1.7vw, 26px);
+      list-style: none;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 8px 0;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--graphite);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: right;
+      background: var(--rose);
+      transition: transform .28s var(--ease);
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-book {
+      padding: 10px 18px;
+      color: var(--ink);
+      border-radius: 999px;
+      background: var(--soft-gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(213, 177, 122, .48);
+      border-radius: 50%;
+      color: var(--ink);
+      background: rgba(255, 255, 255, .78);
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      margin: 5px auto;
+      background: currentColor;
+      transition: transform .3s var(--ease), opacity .3s var(--ease);
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .site-header.menu-open .menu-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: auto;
+      padding: 132px 0 84px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .96), rgba(245, 240, 235, .92)),
+        radial-gradient(circle at 78% 24%, rgba(234, 209, 207, .46), transparent 32rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(360px, .86fr);
+      gap: clamp(34px, 6vw, 72px);
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      margin-bottom: 18px;
+      max-width: 620px;
+      font-size: clamp(3.25rem, 7vw, 7.2rem);
+      color: var(--ink);
+      animation: heroUp .82s .35s var(--ease) both;
+    }
+
+    .slogan {
+      margin-bottom: 18px;
+      color: var(--rose);
+      font-size: clamp(1.35rem, 2.3vw, 2.2rem);
+      font-weight: 600;
+      animation: heroUp .82s .48s var(--ease) both;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin-bottom: 30px;
+      color: var(--graphite);
+      font-size: 1.05rem;
+      animation: heroUp .82s .62s var(--ease) both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: heroUp .82s .76s var(--ease) both;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 540px;
+      animation: heroFade .9s .45s var(--ease) both;
+    }
+
+    .hero-photo-main {
+      position: absolute;
+      right: 0;
+      top: 16px;
+      width: min(430px, 84%);
+      height: 510px;
+      overflow: hidden;
+      border: 1px solid rgba(213, 177, 122, .28);
+      border-radius: 34px;
+      background: var(--pearl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo-main img,
+    .hero-photo-small img,
+    .about-photo img,
+    .service-card img,
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-main img {
+      object-position: center;
+      animation: kenBurns 16s ease-in-out infinite alternate;
+    }
+
+    .hero-photo-small {
+      position: absolute;
+      left: 0;
+      bottom: 28px;
+      width: min(255px, 50%);
+      height: 300px;
+      overflow: hidden;
+      border: 8px solid rgba(255, 255, 255, .92);
+      border-radius: 28px;
+      background: var(--pearl);
+      box-shadow: var(--shadow);
+    }
+
+    @keyframes heroUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateX(28px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes kenBurns {
+      to { transform: scale(1.06); }
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(360px, .72fr) minmax(0, 1fr);
+      gap: clamp(34px, 6vw, 78px);
+      align-items: center;
+    }
+
+    .about-photo {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border-radius: 34px;
+      background: var(--pearl);
+      box-shadow: var(--shadow);
+    }
+
+    .about-photo::after {
+      content: "";
+      position: absolute;
+      inset: auto 24px 24px 24px;
+      height: 120px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, transparent, rgba(23, 21, 20, .36));
+      pointer-events: none;
+    }
+
+    .about-card {
+      padding: clamp(0px, 2vw, 16px);
+    }
+
+    .quality-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 30px 0;
+      list-style: none;
+    }
+
+    .quality-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .66);
+      color: var(--graphite);
+      font-weight: 600;
+    }
+
+    .tick {
+      flex: 0 0 28px;
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      color: var(--ink);
+      background: var(--soft-gold);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      overflow: hidden;
+      border: 1px solid rgba(23, 21, 20, .08);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .82);
+      box-shadow: var(--shadow-soft);
+      transition: transform .32s var(--ease), box-shadow .32s var(--ease), border-color .32s var(--ease);
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(213, 177, 122, .45);
+      box-shadow: var(--shadow);
+    }
+
+    .service-media {
+      height: 245px;
+      background: var(--pearl);
+      overflow: hidden;
+    }
+
+    .service-media img {
+      transition: transform .6s var(--ease);
+    }
+
+    .service-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .service-body {
+      padding: 22px;
+    }
+
+    .service-body h3 {
+      margin-bottom: 8px;
+      transition: color .3s var(--ease);
+    }
+
+    .service-card:hover h3 {
+      color: var(--rose);
+    }
+
+    .service-body p {
+      min-height: 82px;
+      color: var(--mist);
+      font-size: .93rem;
+    }
+
+    .learn {
+      display: inline-flex;
+      margin-top: 16px;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    /* Text treatment menu */
+    .menu-board {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .menu-column {
+      padding: 30px;
+      border: 1px solid rgba(213, 177, 122, .28);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, .74);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .menu-column h3 {
+      padding-bottom: 16px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--rose);
+    }
+
+    .menu-column ul {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .menu-column li {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+      color: var(--graphite);
+      font-weight: 600;
+    }
+
+    .menu-column li::after {
+      content: "";
+      flex: 1;
+      order: 2;
+      min-width: 20px;
+      border-bottom: 1px dotted rgba(23, 21, 20, .22);
+      transform: translateY(-4px);
+    }
+
+    .menu-column span:first-child {
+      order: 1;
+    }
+
+    .menu-column span:last-child {
+      order: 3;
+      color: var(--mist);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Why choose and stats */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .why-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .72);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--soft-gold), #fff4df);
+    }
+
+    .icon svg {
+      width: 23px;
+      height: 23px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+
+    .why-card p {
+      margin-top: 9px;
+      color: var(--mist);
+      font-size: .94rem;
+    }
+
+    .stats {
+      padding: 74px 0;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .72), rgba(234, 209, 207, .58)),
+        linear-gradient(135deg, var(--porcelain), var(--blush));
+      border-block: 1px solid rgba(213, 177, 122, .22);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-card {
+      padding: 22px;
+      border-right: 1px solid rgba(188, 127, 134, .22);
+    }
+
+    .stat-card:last-child {
+      border-right: 0;
+    }
+
+    .stat-number {
+      display: block;
+      color: var(--rose);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.9rem, 5vw, 5.3rem);
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stat-card p {
+      margin-top: 8px;
+      color: var(--graphite);
+      font-weight: 600;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 0;
+      border-radius: var(--radius);
+      background: var(--pearl);
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(2),
+    .gallery-item:nth-child(5) {
+      aspect-ratio: 1 / 1;
+    }
+
+    .gallery-item img {
+      transition: transform .65s var(--ease), filter .35s var(--ease);
+    }
+
+    .gallery-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0;
+      background: linear-gradient(180deg, rgba(23, 21, 20, .08), rgba(23, 21, 20, .38));
+      transition: opacity .32s var(--ease);
+    }
+
+    .gallery-item::after {
+      content: "View";
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 2;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, .58);
+      border-radius: 999px;
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .32s var(--ease), transform .32s var(--ease);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.04);
+    }
+
+    .gallery-item:hover::before,
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item:hover::after {
+      transform: translateY(0);
+    }
+
+    /* Hours and contact */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 54px;
+    }
+
+    .hours-card,
+    .contact-card {
+      padding: 30px;
+      border: 1px solid rgba(213, 177, 122, .26);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .76);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hours-card p {
+      margin-top: 6px;
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, .78fr) minmax(0, 1.22fr);
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 20px;
+      margin: 28px 0 32px;
+      list-style: none;
+    }
+
+    .contact-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--rose);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .contact-list a,
+    .contact-list span {
+      color: var(--graphite);
+      font-weight: 600;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .map-wrap {
+      min-height: 520px;
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--pearl);
+      box-shadow: var(--shadow);
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      border: 0;
+    }
+
+    .footer {
+      padding: 44px 20px;
+      color: var(--graphite);
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, .64), rgba(234, 209, 207, .5)),
+        var(--pearl);
+      border-top: 1px solid rgba(213, 177, 122, .24);
+    }
+
+    .designer {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--rose);
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--rose), var(--champagne), #fff, var(--rose));
+      background-size: 220% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .designer:hover {
+      color: transparent;
+      animation: shineText 1.2s linear infinite;
+    }
+
+    @keyframes shineText {
+      to { background-position: 220% 0; }
+    }
+
+    /* Animation utilities */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+      transition-delay: var(--delay, 0s);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(23, 21, 20, .88);
+      backdrop-filter: blur(10px);
+      transition: opacity .3s var(--ease), visibility .3s var(--ease);
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox img {
+      width: min(980px, 100%);
+      max-height: 84vh;
+      object-fit: contain;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .42);
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, .44);
+      border-radius: 50%;
+      color: #fff;
+      background: rgba(255, 255, 255, .12);
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 520px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 920px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 20px;
+        right: 20px;
+        display: grid;
+        gap: 8px;
+        padding: 22px;
+        border: 1px solid rgba(213, 177, 122, .28);
+        border-radius: 22px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        background: rgba(255, 255, 255, .94);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+        transition: opacity .3s var(--ease), visibility .3s var(--ease), transform .3s var(--ease);
+      }
+
+      .site-header.menu-open .nav-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .nav-book {
+        justify-self: start;
+      }
+
+      .section-head,
+      .menu-board,
+      .why-grid,
+      .hours-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card {
+        border-right: 0;
+        border-bottom: 1px solid rgba(188, 127, 134, .22);
+      }
+
+      .stat-card:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 118px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 16vw, 4.9rem);
+      }
+
+      .hero-visual {
+        min-height: auto;
+        display: grid;
+        gap: 16px;
+      }
+
+      .hero-photo-main,
+      .hero-photo-small {
+        position: static;
+        width: 100%;
+      }
+
+      .hero-photo-main {
+        height: auto;
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero-photo-small {
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-width: 0;
+      }
+
+      .about-photo {
+        min-height: auto;
+        aspect-ratio: 4 / 5;
+      }
+
+      .quality-list,
+      .menu-board,
+      .services-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-column {
+        padding: 24px 18px;
+      }
+
+      .menu-column li {
+        gap: 10px;
+        font-size: .92rem;
+      }
+
+      .contact-actions .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .menu-column li {
+        display: grid;
+        gap: 2px;
+      }
+
+      .menu-column li::after {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading screen -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-card">
+      <img src="images/logo.png" alt="">
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Diamond Nails home">
+        <img class="brand-logo" src="images/logo.png" alt="Diamond Nails logo">
+        <span>Diamond Nails</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav aria-label="Primary navigation">
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="#home">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#menu">Menu</a></li>
+          <li><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link" href="#hours">Opening Hours</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+          <li><a class="nav-link nav-book" href="#">Book Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero section -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Diamond Nails</h1>
+          <div class="slogan">Elegant Nails, Beautiful You.</div>
+          <p>Experience premium nail care in a calm, polished salon environment. Our technicians create refined manicures, durable enhancements and beautiful nail designs tailored to your personal style.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#">Book Now</a>
+            <a class="btn btn-light" href="#contact">Contact Us</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Diamond Nails work showcase">
+          <div class="hero-photo-main">
+            <img src="images/hero.jpg" alt="Luxury pink nail design" loading="eager">
+          </div>
+          <div class="hero-photo-small">
+            <img src="images/gallery-3.jpg" alt="Detailed nail art by Diamond Nails" loading="eager">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="images/about.jpg" alt="Diamond Nails manicure result" loading="lazy">
+        </div>
+        <div class="about-card reveal" style="--delay:.12s">
+          <span class="eyebrow">About Diamond Nails</span>
+          <h2>A refined nail salon focused on detail, hygiene and comfort.</h2>
+          <p class="lead">Diamond Nails brings modern European salon styling to Matlock with careful treatments, clean workstations and a relaxed appointment experience. From natural finishes to sculpted extensions and detailed nail art, every service is finished with precision.</p>
+          <ul class="quality-list">
+            <li><span class="tick">✓</span>Professional technicians</li>
+            <li><span class="tick">✓</span>Hygienic workstations</li>
+            <li><span class="tick">✓</span>Premium products</li>
+            <li><span class="tick">✓</span>Relaxing atmosphere</li>
+            <li><span class="tick">✓</span>Personal nail advice</li>
+            <li><span class="tick">✓</span>Customer satisfaction</li>
+          </ul>
+          <a class="btn btn-primary" href="#menu">View Treatment Menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services section -->
+    <section class="section alt" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Services</span>
+            <h2>Premium treatments for polished hands and feet.</h2>
+          </div>
+          <p class="lead">The service cards use selected local images only. Each image is framed consistently so the layout feels more controlled and modern.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal" style="--delay:.1s"><div class="service-media"><img src="images/service-manicure.jpg" alt="Manicure" loading="lazy"></div><div class="service-body"><h3>Manicure</h3><p>Clean shaping, cuticle care and refined polish for naturally elegant hands.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.2s"><div class="service-media"><img src="images/service-pedicure.jpg" alt="Pedicure" loading="lazy"></div><div class="service-body"><h3>Pedicure</h3><p>Foot care, smoothing and colour with a comfortable salon finish.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.3s"><div class="service-media"><img src="images/service-gel.jpg" alt="Gel nails" loading="lazy"></div><div class="service-body"><h3>Gel Nails</h3><p>Glossy, long-lasting colour designed for everyday wear.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.4s"><div class="service-media"><img src="images/service-acrylic.jpg" alt="Acrylic nails" loading="lazy"></div><div class="service-body"><h3>Acrylic Nails</h3><p>Structured extensions with custom length, shape and colour.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.5s"><div class="service-media"><img src="images/service-nail-art.jpg" alt="Nail art" loading="lazy"></div><div class="service-body"><h3>Nail Art</h3><p>From subtle accents to statement designs with crisp detailing.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.6s"><div class="service-media"><img src="images/service-biab.jpg" alt="BIAB nails" loading="lazy"></div><div class="service-body"><h3>BIAB</h3><p>Builder gel support for strength, growth and a smooth finish.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.7s"><div class="service-media"><img src="images/gallery-1.jpg" alt="Infills" loading="lazy"></div><div class="service-body"><h3>Infills</h3><p>Refresh and rebalance existing enhancements with careful shaping.</p><a class="learn" href="#contact">Learn More</a></div></article>
+          <article class="service-card reveal" style="--delay:.8s"><div class="service-media"><img src="images/gallery-2.jpg" alt="Luxury spa pedicure" loading="lazy"></div><div class="service-body"><h3>Luxury Spa Pedicure</h3><p>An indulgent treatment for softer skin and a polished result.</p><a class="learn" href="#contact">Learn More</a></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Treatment menu section -->
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Treatment Menu</span>
+            <h2>Service menu and prices.</h2>
+          </div>
+          <p class="lead">A clean text version of the salon price list, designed so names and prices are easy to update without replacing images.</p>
+        </div>
+        <div class="menu-board">
+          <div class="menu-column reveal" style="--delay:.1s">
+            <h3>Nail Extensions</h3>
+            <ul>
+              <li><span>Overlay &amp; Gel Colour</span><span>Full Set £35 / Infill £30</span></li>
+              <li><span>Ombre</span><span>Full Set £40 / Infill £35</span></li>
+              <li><span>Pink &amp; White</span><span>Full Set £38 / Infill £35</span></li>
+              <li><span>Glitter Powder</span><span>Full Set £35 / Infill £30</span></li>
+              <li><span>Gel Powder &amp; Colour</span><span>Full Set £35 / Infill £30</span></li>
+              <li><span>Take Off Acrylic</span><span>£10</span></li>
+              <li><span>Take Off &amp; Gel Colour</span><span>£25</span></li>
+              <li><span>Take Off &amp; New Set 1 Colour</span><span>£40</span></li>
+              <li><span>Take Off &amp; Ombre</span><span>£43</span></li>
+              <li><span>Take Off Gel</span><span>£5</span></li>
+            </ul>
+          </div>
+          <div class="menu-column reveal" style="--delay:.2s">
+            <h3>Manicure, Pedicure &amp; Extras</h3>
+            <ul>
+              <li><span>Acrylic Two Big Toes</span><span>£10</span></li>
+              <li><span>Acrylic Toes with Gel Colour</span><span>£38</span></li>
+              <li><span>Manicure</span><span>£15</span></li>
+              <li><span>Manicure &amp; Gel Colour</span><span>£28</span></li>
+              <li><span>Pedicure</span><span>£35</span></li>
+              <li><span>Pedicure &amp; Gel Colour</span><span>£40</span></li>
+              <li><span>Pedicure &amp; French Tip</span><span>£45</span></li>
+              <li><span>Gel Colour Hand</span><span>£22</span></li>
+              <li><span>Gel Colour Toes</span><span>£22</span></li>
+              <li><span>Chrome Extra</span><span>£5</span></li>
+              <li><span>Cat-eye Extra</span><span>£5</span></li>
+              <li><span>Long Nail</span><span>£5-£10</span></li>
+              <li><span>Nail Repair</span><span>£3</span></li>
+              <li><span>Change Powder</span><span>£35</span></li>
+              <li><span>Builder Gel (BIAB) with Gel Colour</span><span>£35</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose us section -->
+    <section class="section alt" id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Why Choose Us</span>
+            <h2>A salon experience built around polish and trust.</h2>
+          </div>
+          <p class="lead">Every appointment is handled with clean tools, friendly service and careful attention to the finish.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card reveal" style="--delay:.1s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3>Experienced Team</h3><p>Skilled technicians with a steady eye for detail.</p></article>
+          <article class="why-card reveal" style="--delay:.2s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div><h3>Quality Products</h3><p>Professional products selected for durability and shine.</p></article>
+          <article class="why-card reveal" style="--delay:.3s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-8h6v8"/></svg></div><h3>Luxury Environment</h3><p>A calm space with a clean modern salon feel.</p></article>
+          <article class="why-card reveal" style="--delay:.4s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>Affordable Pricing</h3><p>Premium care with clear value for regular visits.</p></article>
+          <article class="why-card reveal" style="--delay:.5s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"/><path d="M8 13s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div><h3>Friendly Service</h3><p>Welcoming appointments that feel relaxed and easy.</p></article>
+          <article class="why-card reveal" style="--delay:.6s"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-5"/></svg></div><h3>Hygiene Guaranteed</h3><p>Clean tools and tidy stations for every treatment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics section -->
+    <section class="stats reveal" aria-label="Diamond Nails statistics">
+      <div class="container stats-grid">
+        <div class="stat-card"><span class="stat-number counter" data-target="10">0</span><p>Years Experience</p></div>
+        <div class="stat-card"><span class="stat-number counter" data-target="5000">0</span><p>Happy Clients</p></div>
+        <div class="stat-card"><span class="stat-number counter" data-target="10000">0</span><p>Treatments Completed</p></div>
+      </div>
+    </section>
+
+    <!-- Gallery section -->
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Gallery</span>
+            <h2>Selected nail work in a cleaner visual grid.</h2>
+          </div>
+          <p class="lead">The gallery now uses consistent spacing, softer crops and a restrained hover overlay so the photos feel more premium.</p>
+        </div>
+        <div class="gallery-grid reveal" style="--delay:.16s">
+          <button class="gallery-item" type="button" aria-label="Open gallery image 1"><img src="images/gallery-1.jpg" alt="Orange floral nail design" loading="lazy"></button>
+          <button class="gallery-item" type="button" aria-label="Open gallery image 2"><img src="images/gallery-2.jpg" alt="Pink black nail art" loading="lazy"></button>
+          <button class="gallery-item" type="button" aria-label="Open gallery image 3"><img src="images/gallery-3.jpg" alt="Modern manicure" loading="lazy"></button>
+          <button class="gallery-item" type="button" aria-label="Open gallery image 4"><img src="images/gallery-4.jpg" alt="Pink long nails" loading="lazy"></button>
+          <button class="gallery-item" type="button" aria-label="Open gallery image 5"><img src="images/gallery-5.jpg" alt="Pink nail extensions" loading="lazy"></button>
+          <button class="gallery-item" type="button" aria-label="Open gallery image 6"><img src="images/gallery-6.jpg" alt="Detailed manicure" loading="lazy"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opening hours and contact section -->
+    <section class="section alt" id="hours">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Opening Hours</span>
+            <h2>Visit Diamond Nails in Matlock.</h2>
+          </div>
+          <p class="lead">Book your appointment by phone, email, Facebook or the future booking link.</p>
+        </div>
+        <div class="hours-grid">
+          <article class="hours-card reveal" style="--delay:.1s"><h3>Monday - Saturday</h3><p>9:00 AM - 6:00 PM</p></article>
+          <article class="hours-card reveal" style="--delay:.2s"><h3>Sunday</h3><p>Closed</p></article>
+          <article class="hours-card reveal" style="--delay:.3s"><h3>Bank Holidays</h3><p>Closed</p></article>
+        </div>
+        <div class="contact-layout" id="contact">
+          <div class="contact-card reveal">
+            <span class="eyebrow">Contact</span>
+            <h2>Book your next appointment.</h2>
+            <ul class="contact-list">
+              <li><strong>Address</strong><span>18 Firs Parade, Matlock, DE4 3AS</span></li>
+              <li><strong>Phone</strong><a href="tel:01629258508">01 629 258 508</a><br><a href="tel:07366668899">07366668899</a></li>
+              <li><strong>Email</strong><a href="mailto:ericdinh1991@gmail.com">ericdinh1991@gmail.com</a></li>
+            </ul>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="tel:01629258508">Call Now</a>
+              <a class="btn btn-light" href="mailto:ericdinh1991@gmail.com">Send Email</a>
+              <a class="btn btn-light" href="https://www.facebook.com/anthy.tran.775" target="_blank" rel="noopener">Facebook</a>
+            </div>
+          </div>
+          <div class="map-wrap reveal" style="--delay:.15s">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d211.55043775908723!2d-1.5527983212279326!3d53.138556747672624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879897207924bf1%3A0xeeb9046684c8e9fd!2sDiamond%20Nails%20Matlock!5e0!3m2!1svi!2s!4v1781100773873!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Diamond Nails Matlock Google Map"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer reveal">
+    <p>&copy; 2026 All Rights Reserved</p>
+    <p><span class="designer">Designed by Hoangcaster</span></p>
+  </footer>
+
+  <!-- Gallery lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Gallery image preview">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close gallery preview">&times;</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script>
+    /* Loading screen */
+    const loader = document.getElementById("loader");
+    window.addEventListener("load", () => {
+      window.setTimeout(() => loader.classList.add("is-hidden"), 420);
+    });
+
+    /* Header scroll state and mobile menu */
+    const header = document.getElementById("siteHeader");
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    function updateHeader() {
+      header.classList.toggle("is-scrolled", window.scrollY > 18);
+    }
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = header.classList.toggle("menu-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        header.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* Missing local image fallback */
+    document.querySelectorAll("img").forEach((image) => {
+      image.addEventListener("error", () => {
+        image.style.opacity = "0";
+        image.parentElement.style.background = "linear-gradient(135deg, #fbfaf8, #ead1cf 54%, #ead8b7)";
+      });
+    });
+
+    /* Scroll reveal */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -60px 0px" });
+
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+    /* Animated counters */
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const counter = entry.target;
+        const target = Number(counter.dataset.target);
+        const start = performance.now();
+        const duration = 1600;
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.floor(target * eased).toLocaleString("en-GB") + "+";
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(counter);
+      });
+    }, { threshold: .55 });
+
+    document.querySelectorAll(".counter").forEach((counter) => counterObserver.observe(counter));
+
+    /* Gallery lightbox */
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".gallery-item img").forEach((image) => {
+      image.parentElement.addEventListener("click", () => {
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.classList.add("is-open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      document.body.style.overflow = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+  </script>
+</body>
+</html>
